@@ -1,26 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// import { Typography } from '@material-ui/core';
+import { Route, RouteComponentProps, withRouter } from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import PrivateModule from 'src/modules/Private';
+import { WithStyles, withStyles } from '@material-ui/core';
+
+import styles from './App.styles';
+
+export interface AppProps extends WithStyles<typeof styles>, RouteComponentProps {}
+
+class App extends React.Component<AppProps> {
+  render () {
+    return (
+      // <Typography component="div">
+        <Route 
+          path="/"
+          component={PrivateModule}
+        />
+      // </Typography>
+    );
+  }
 }
 
-export default App;
+export default withStyles(styles)(withRouter(App));

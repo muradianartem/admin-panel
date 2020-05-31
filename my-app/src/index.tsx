@@ -1,13 +1,21 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
+import { render } from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { Router } from 'react-router-dom';
+import { MuiThemeProvider } from '@material-ui/core';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+import theme from 'src/core/theme';
+import history from 'src/shared/utils/history';
+
+render(
+  (
+    <Router history={history}>
+      <MuiThemeProvider theme={{theme}}>
+        <App />
+      </MuiThemeProvider>
+    </Router>
+  ),
   document.getElementById('root')
 );
 
